@@ -9,6 +9,9 @@
 </head>
 <body>
 
+    <div class="cross"></div>
+
+
     
     <a href="/about-us">about me</a>
     <a href="/">home</a>
@@ -17,4 +20,34 @@
 
     
 </body>
+<script>
+    fetch("http://jsonplaceholder.typicode.com/users/")
+    .then((response)=>response.json())
+    .then((data)=>{
+        for (let index = 0; index < data.length; index++) {
+            const element = data[index];
+            // console.log(element);
+            document.querySelector(".cross").innerHTML += `<h1> ${element.id}</h1> 
+            <p>${element.id}</p>
+            <p>${element.name}</p>
+            <h2>${element.username}</h2>
+            <p>${element.email}</p> 
+            <p>${element.address.street}</p>
+            <p>${element.address.suite}</p>
+            <p>${element.address.city}</p>
+            <p>${element.address.zipcode}</p>
+            <p>${element.address.geo.lat}</p>
+            <p>${element.address.geo.lng}</p>
+            <p>${element.phone}</p>
+            <p>${element.website}</p>
+            <p>${element.company.name}</p>
+            <p>${element.company.catchPhrase}</p>
+            `;
+            
+            ;       
+        }
+    }).catch((err)=>{
+        console.log(err);
+    })
+</script>
 </html>

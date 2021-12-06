@@ -1,11 +1,25 @@
-const { AddBoxOutlined } = require("@material-ui/icons");
 const fs = require("fs");
 const http = require("http");
 const path = require("path");
-const bootstrap = require("bootstrap.min.css");
 //const server = require ("server");
-
 //console.log(http.STATUS_CODES); it is the different codes used on the server//
+let data= [
+    {
+        name: "emma",
+    },
+    {
+        name: "peter",
+    },
+    {
+        name: "vicent",
+    },
+    {
+        name: "dapo",
+    },
+]
+
+
+
 
 server = http.createServer((req,res)=>{
     switch (req.url) {
@@ -24,13 +38,19 @@ server = http.createServer((req,res)=>{
                 res.write(child);
                 res.end();
                 break;
+        
+            case "/contact":
+                let things=path.join("views/contact.html")
+                let wait= fs.readFileSync(things,"utf-8")
+                res.writeHead(201,{"content-type": "text/html"});
+                res.write(wait);
+                res.end();
+                break;
 
             
-                case "/Contact-us":
-                    let joe=path.join("views/Contact.html")
-                    let kim= fs.readFileSync(joe,"utf-8")
-                    res.writeHead(201,{"content-type": "text/html"});
-                    res.write(kim);
+                case "/api/names":
+                    res.writeHead(201,{"content-type": "application/json"});
+                    res.write(JSON.stringify(data));
                     res.end();
                     break;
 
