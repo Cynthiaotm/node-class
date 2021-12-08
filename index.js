@@ -1,98 +1,125 @@
-const path= require("path");
-const fs = require("fs");
+const express = require("express");
+const path = require("path");
 
 
-// fs.mkdir("project",(err)=> { //created a folder//
-//     if (err) throw err;
-// let pop= path.join(__dirname,"project/index.txt") //created a file inside of the folder//
-// fs.writeFile(pop,"js is awesome",(err)=>{ //write text inside of the file just created//
-//     if (err) throw err;
-//     console.log("task is done");
-// })
-    
-// })
+const app =  express();
+
+//initialized app
+app.use(express.static(path.join(__dirname,"public")))
 
 
-// let var0 = path.join(__dirname, "project/index.txt");
-// fs.mkdir(var0, (err) =>{
-//     if (err) throw err;
-//     fs.writeFile(var0+ "js is awesome",(err)=>{
-//         if (err) throw err;
-//         console.log("task is carried out successfully");
-//     })
-// })
+let index1 = path.join(__dirname,"views/index.html");
+let index2 = path.join(__dirname,"views/about.html");
+let index3 = path.join(__dirname,"views/contact.html");
+let index4 = path.join(__dirname,"views/post.html");
 
 
-// let var1 = path.join(__dirname, "project/css");
-// fs.mkdir(var1, (err) =>{
-//     if (err) throw err;
-//     fs.writeFile(var1 +"/style.css", "js is awesome",(err)=>{
-//         if (err) throw err;
-//         console.log("task is carried out successfully");
-//     })
-// })
+app.get("/",(req,res)=>{
+    res.sendFile(index1)
+});
 
-// let var2 = path.join(__dirname, "project/js");
-// fs.mkdir(var2, (err) =>{
-//     if (err) throw err;
-//     fs.writeFile(var2+ "/script.js", "js is awesome",(err)=>{
-//         if (err) throw err;
-//         console.log("task is carried out successfully");
-//     })
-// })
+app.get("/about",(req,res)=>{
+    res.sendFile(index2)
+});
 
 
-let var1 = path.join(__dirname,"project");
-fs.mkdir(var1,(err)=>{
-    if (err) throw err;
-    console.log("project folder has been created");
+app.get("/contact",(req,res)=>{
+    res.sendFile(index3)
+});
+
+app.get("/products",(req,res)=>{
+    res.sendFile(index4)
+});
+
+
+
+const PORT = process.env.PORT || 1200;
+
+app.listen(PORT,()=>{
+    console.log(`server is running on http://localhost${PORT}`);
 })
-let var2= path.join(__dirname,"project/client")
-fs.mkdir(var2, (err)=>{
-    if (err) throw err;
-    console.log("client has beeen created inside project");
-})
-let var3= path.join(__dirname,"project/server")
-fs.mkdir(var3,(err)=>{
-    if (err) throw err;
-    console.log("server has been created");
-})
-let var4= path.join(__dirname,"project/client/views")
-fs.mkdir(var4,(err)=>{
-    if (err) throw err;
-    console.log("views has beeen created");
-})
-let var5= path.join(__dirname,"project/client/css");
-fs.mkdir(var5,(er)=>{
-    if (err) throw err;
-    console.log("css has been created");
-})
-let var6= path.join(__dirname,"project/client/js");
-fs.mkdir(var6,(err)=>{
-    if (err) throw err;
-    console.log("js has been created");
-})
-let var7 = path.join(__dirname,"project/server/routes")
-fs.mkdir(var7,)
 
 
 
 
 
-// let var1 = path.join(__dirname, "project/css");
-// fs.mkdir(var1, (err) =>{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const { rejects } = require("assert");
+// const fs = require("fs");
+// const path = require("path");
+// const { resolve } = require("path");
+// const util = require("util");
+
+// // const promise = new Promise((resolve,reject)=>{
+// //     resolve("good");
+// //     reject("bad error")
+// // })
+// // .then((message)=> console.log(message))
+// // .catch((err)=> console.log(err));
+
+// // //reading a single file using promise//
+// // let readTwo= util.promisify(fs.readFile);
+
+// // readTwo(dataOne, "utf-8")
+// // .then((data)=>{console.log(data)});
+
+// // let readThree = util.promisify(fs.writeFile);
+// // let readFour = util.promisify(fs.readFile);
+// // let dataTwo = path.join(__dirname,"money/ify.txt");
+
+// // readThree(dataTwo, "i am marycynthia")
+// // readFour(dataTwo, "utf-8")
+
+// // .then((data)=>{console.log(data)})
+
+
+// fs.mkdir("silence",(err)=> { 
 //     if (err) throw err;
-//     fs.writeFile(var1 +"/style.css", "js is awesome",(err)=>{
-//         if (err) throw err;
-//         console.log("task is carried out successfully");
-//     })
+//     console.log("folder has beeen created");
 // })
 
-// let var2 = path.join(__dirname, "project/js");
-// fs.mkdir(var2, (err) =>{
-//     if (err) throw err;
-//     fs.writeFile(var2+ "/script.js", "js is awesome",(err)=>{
-//         if (err) throw err;
-//         console.log("task is carried out successfully");
-//     })
-// })
+// let folderOne = util.promisify(fs.mkdir);
+
+// folderOne("folders").catch((err){console.log});
+
+
