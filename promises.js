@@ -11,7 +11,7 @@ const util = require("util");
 // .then((message)=> console.log(message))
 // .catch((err)=> console.log(err));
 
-// //readind a single file using promise//
+// //reading a single file using promise//
 // let readTwo= util.promisify(fs.readFile);
 
 // readTwo(dataOne, "utf-8")

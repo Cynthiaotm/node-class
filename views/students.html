@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>revison on server</title>
+</head>
+<body>
+
+    <div id="task"></div>
+    
+
+
+</body>
+<script>
+    fetch("http://localhost:5000/api/students")
+    .then((response)=> response.json())
+    .then((data1)=>{
+        for (let index = 0; index < data1.length; index++) {
+            const element = data1[index];
+            console.log(element);
+            // document.querySelector("#task").innerHTML += `
+            // <h1>Name:${element.name}</h1>
+            // <h4>age:${element.age}</h4>
+            // <h3>complexion:${element.complexion}</h3>`;
+        }
+      
+    }).catch((err)=>{
+        console.log(err);
+    })
+</script>
+</html>
